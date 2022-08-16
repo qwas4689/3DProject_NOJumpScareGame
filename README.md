@@ -7,7 +7,7 @@ I'm on Observation Duty의 모작
 - 올바른 보고를 하면 직원들이 출동해 이상현상을 수정 해 준다.
 - 잘못된 보고 혹은 이상현상을 방치한다면 무슨일이 생길지 모른다.
 
-링크 : [I'm on Observation Duty] (https://www.youtube.com/watch?v=Dh2tVfEs1Jw)
+링크 : [I'm on Observation Duty](https://www.youtube.com/watch?v=Dh2tVfEs1Jw)
 
 # 게임 방식 & 플레이
  - 계속 CCTV를 확인하며 이상현상이 발견되면 보고하기
