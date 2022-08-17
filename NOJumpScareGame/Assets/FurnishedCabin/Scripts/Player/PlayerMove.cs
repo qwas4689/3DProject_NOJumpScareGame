@@ -5,13 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private string horizontalInputName = "Horizontal";
-    [SerializeField] private string verticalInputName = "Vertical";
-
-    [SerializeField] private float movementSpeed = 4f;
-
     private CharacterController charController;
 
+    [SerializeField] 
+    private float movementSpeed = 4f;
 
     private void Awake()
     {
@@ -25,8 +22,9 @@ public class PlayerMove : MonoBehaviour
 
     private void PlayerMovement()
     {
-        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;     //CharacterController.SimpleMove() applies deltaTime
-        float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
+        float vertInput = Input.GetAxis("Vertical") * movementSpeed;     
+        //CharacterController.SimpleMove() applies deltaTime
+        float horizInput = Input.GetAxis("Horizontal") * movementSpeed;
 
         Vector3 forwardMovement = transform.forward * vertInput;
         Vector3 rightMovement = transform.right * horizInput;
