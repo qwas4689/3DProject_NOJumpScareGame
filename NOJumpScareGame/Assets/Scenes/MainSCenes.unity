@@ -1603,11 +1603,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &238072572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2271036430416539205, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
-  m_PrefabInstance: {fileID: 727958150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &247485027
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,20 +4253,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2271036430416539210, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
   m_PrefabInstance: {fileID: 727958150}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &768950855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238072572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dda6b2721c2305142abf2550f5c52098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 1545803117}
-  phone: {fileID: 1421358292}
 --- !u!1 &775988930
 GameObject:
   m_ObjectHideFlags: 0
@@ -5974,6 +5955,28 @@ Transform:
   m_Father: {fileID: 2041783993}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1157173989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2271036430514701901, guid: d512ebcdf02532446b58dc05fc0f10d2, type: 3}
+  m_PrefabInstance: {fileID: 727958150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1157173993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157173989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda6b2721c2305142abf2550f5c52098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1545803117}
+  phone: {fileID: 1421358292}
+  mats:
+  - {fileID: 2100000, guid: 68fc2289a1d9b3340bbaa93e49610556, type: 2}
+  - {fileID: 2100000, guid: b59597790486f4840b76f888406178c5, type: 2}
 --- !u!1 &1171420418
 GameObject:
   m_ObjectHideFlags: 0
@@ -7648,7 +7651,7 @@ GameObject:
   - component: {fileID: 1545803118}
   - component: {fileID: 1545803120}
   m_Layer: 0
-  m_Name: Phone
+  m_Name: PhoneCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

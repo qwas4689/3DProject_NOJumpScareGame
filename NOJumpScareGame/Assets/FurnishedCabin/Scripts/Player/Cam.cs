@@ -7,47 +7,81 @@ public class Cam : MonoBehaviour
     public GameObject cam;
     public GameObject phone;
 
+    public Material[] mats;
+
+    private bool isPhoneOn = false;
+    private bool isPhoneOff = false;
     private bool isActive = false;
 
     void Start()
     {
+        for (int i = 0; i < 2; ++i)
+        {
+            mats[i] = GetComponentInChildren<Renderer>().materials[i];
+            mats[i].SetFloat("_DissolveAmount", 1f);
+        }
         cam.SetActive(false);
-        phone.SetActive(false);
     }
 
     void Update()
     {
         camOnOff();
+        phoneAndCamOn();
     }
 
     private void camOnOff()
     {
         if (Input.GetKeyDown(KeyCode.F) && isActive == false)
         {
-            Debug.Log("ÄÑ±â");
-            phone.SetActive(true);
-            
-            Invoke("camOn", 0.5f);
+            isPhoneOn = true;
+            isPhoneOff = false;
         }
 
         if (Input.GetKeyDown(KeyCode.F) && isActive == true)
         {
-            Debug.Log("²ô±â");
-            cam.SetActive(false);
-            
-            Invoke("phoneOff", 0.5f);
-
+            isPhoneOff = true;
+            isPhoneOn = false;
         }
     }
 
-    private void camOn()
+    private void phoneAndCamOn()
+    {
+        float[] amount = new float[2];
+
+        for (int i = 0; i < 2; ++i)
+        {
+            amount[i] = mats[i].GetFloat("_DissolveAmount");
+        }
+
+        if (isPhoneOn)
+        {
+            Invoke("camOn", 0.8f);
+            for (int i = 0; i < 2; ++i)
+            {
+                if (amount[i] > 0)
+                {
+                    mats[i].SetFloat("_DissolveAmount", amount[i] - (1f * Time.deltaTime));
+                }
+            }
+            isActive = true;
+        }
+
+        if (isPhoneOff)
+        {
+            cam.SetActive(false);
+            for (int i = 0; i < 2; ++i)
+            {
+                if (amount[i] < 1f)
+                {
+                    mats[i].SetFloat("_DissolveAmount", amount[i] + (1f * Time.deltaTime));
+                }
+            }
+            isActive = false;
+        }
+    }
+
+    void camOn()
     {
         cam.SetActive(true);
-        isActive = true;
-    }
-    private void phoneOff()
-    {
-        phone.SetActive(false);
-        isActive = false;
     }
 }
