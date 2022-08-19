@@ -2,33 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieCreate : MonoBehaviour
+public class LayingZombie : MonoBehaviour
 {
     public GameObject zombieprefab;
 
     public GameObject[] create;
 
-    private int num;
-
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("createZombie");
+        StartCoroutine("layingZombie");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    IEnumerator createZombie()
+    IEnumerator layingZombie()
     {
         while (true)
         {
-            yield return new WaitForSeconds(60f);
+            yield return new WaitForSeconds(120f);
 
-            num = Random.Range(0, 5);
+            int num;
+            num = Random.Range(0, 2);
             Debug.Log(num);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
 

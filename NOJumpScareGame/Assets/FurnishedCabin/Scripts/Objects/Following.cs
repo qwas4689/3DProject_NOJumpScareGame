@@ -54,6 +54,17 @@ public class Following : MonoBehaviour
         }
     }
 
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            StopCoroutine(scream());
+            StartCoroutine(scream());
+        }
+    }
+
     IEnumerator scream()
     {
         while (true)
@@ -66,16 +77,7 @@ public class Following : MonoBehaviour
             isFind = true;
 
             yield break;
-
         }
 
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            StartCoroutine("scream");
-        }
     }
 }
