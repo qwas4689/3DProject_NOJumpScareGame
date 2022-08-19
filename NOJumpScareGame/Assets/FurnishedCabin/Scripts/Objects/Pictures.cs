@@ -51,7 +51,7 @@ public class Pictures : MonoBehaviour
         {
             fixLi[i].SetActive(true);
             ++i;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(10f);
             if (i == 5)
             {
                 i = 0;
