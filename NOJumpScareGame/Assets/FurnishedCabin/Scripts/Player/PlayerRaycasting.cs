@@ -9,8 +9,9 @@ public class PlayerRaycasting : MonoBehaviour
 
     private Camera cam;
     public LayerMask layerMask;
+    public LayerMask layerMask2;
 
-    private float MaxRay = 5f;
+    private float MaxRay = 7f;
     private float num = 0f;
 
     public GameObject tri;
@@ -29,12 +30,11 @@ public class PlayerRaycasting : MonoBehaviour
 
         ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         
-        if (Physics.Raycast(ray, out hit, MaxRay, layerMask))
+        if (Physics.Raycast(ray, out hit, MaxRay, layerMask) || Physics.Raycast(ray, out hit, MaxRay, layerMask2))
         {
-            Debug.Log(hit.transform.name);
             Debug.DrawRay(ray.origin, ray.direction * 5, Color.green);
             tri.SetActive(true);
-            if (hit.collider.tag == "Problem")
+            if (hit.collider.tag == "Problem" || hit.collider.tag == "CantSee")
             {
                 if (Input.GetKeyDown(KeyCode.E) && num > 5f)
                 {
@@ -47,14 +47,14 @@ public class PlayerRaycasting : MonoBehaviour
                 }
             }
         }
-        else if (num > 5f)
-        {
-            cooltime.SetActive(false);
-        }
         else
         {
-            Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
             tri.SetActive(false);
+            Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
+        }
+        if (num > 5f)
+        {
+            cooltime.SetActive(false);
         }
         
     }

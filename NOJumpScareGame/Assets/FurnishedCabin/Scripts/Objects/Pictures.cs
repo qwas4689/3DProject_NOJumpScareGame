@@ -26,8 +26,8 @@ public class Pictures : MonoBehaviour
             li.Add(gameObjects[i]);
         }
 
-        bool[] lists = new bool[5];
-        int num = Random.Range(0, 5);
+        bool[] lists = new bool[6];
+        int num = Random.Range(0, 6);
 
         while (!(fixLi.Count == gameObjects.Length))
         {
@@ -38,7 +38,7 @@ public class Pictures : MonoBehaviour
             }
             else
             {
-                num = Random.Range(0, 5);
+                num = Random.Range(0, 6);
             }
         }
     }
