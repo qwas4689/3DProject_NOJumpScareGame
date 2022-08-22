@@ -9,6 +9,7 @@ public class Following : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Animator ani;
     private bool isFind;
+    private AudioSource zombieSound;
 
     private Transform target;
 
@@ -16,6 +17,7 @@ public class Following : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         ani = GetComponent<Animator>();
+        zombieSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -60,6 +62,7 @@ public class Following : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            zombieSound.Play();
             StopCoroutine(scream());
             StartCoroutine(scream());
         }

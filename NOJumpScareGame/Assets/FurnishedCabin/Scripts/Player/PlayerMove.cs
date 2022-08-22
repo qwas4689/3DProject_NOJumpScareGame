@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private CharacterController charController;
+    private AudioSource playerWalkSound;
+
 
     [SerializeField] 
     private float movementSpeed = 4f;
@@ -13,6 +15,11 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        playerWalkSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -31,5 +38,7 @@ public class PlayerMove : MonoBehaviour
 
         //simple move applies delta time automatically
         charController.SimpleMove(forwardMovement + rightMovement);
+
+        playerWalkSound.Play();
     }
 }
