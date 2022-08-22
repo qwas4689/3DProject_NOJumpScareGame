@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     //public GameObject gameOverText;
     private float thisTime;
-    private float timeSpeed = 1f;
+    private float timeSpeed = 0.02f;
     private bool overTime;
 
     // private bool isGameOver;

@@ -28,7 +28,6 @@ public class ZombieCreate : MonoBehaviour
         {
 
             num = Random.Range(0, 5);
-            Debug.Log(num);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
 
             yield return new WaitForSeconds(60f);
