@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GAMECLEARTEXT : MonoBehaviour
 {
     public Text timeText;
-    public GameObject title;
+    
 
     private string[] endGame;
 
@@ -14,7 +14,7 @@ public class GAMECLEARTEXT : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        endGame = new string[13];
+        endGame = new string[16];
         endGame[0] = "G";
         endGame[1] = "A";
         endGame[2] = "m";
@@ -28,8 +28,11 @@ public class GAMECLEARTEXT : MonoBehaviour
         endGame[10] = ".";
         endGame[11] = ".";
         endGame[12] = ".";
+        endGame[13] = ".";
+        endGame[14] = ".";
+        endGame[15] = ".";
 
-        title.SetActive(false);
+
         StartCoroutine(endText());
     }
 
@@ -41,14 +44,14 @@ public class GAMECLEARTEXT : MonoBehaviour
 
     IEnumerator endText()
     {
-        for (int i = 0; i < 13; ++i)
+        for (int i = 0; i < 16; ++i)
         {
             timeText.text += endGame[i];
 
             yield return new WaitForSeconds(1f);
         }
 
-        title.SetActive(true);
+        
         yield break;
     }
 

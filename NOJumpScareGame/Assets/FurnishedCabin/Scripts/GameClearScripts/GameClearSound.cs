@@ -7,6 +7,8 @@ public class GameClearSound : MonoBehaviour
     private AudioSource gameClearSound;
     public GameObject End;
 
+    public GameObject title;
+
     private float wasteTime = 0;
 
     // Start is called before the first frame update
@@ -14,6 +16,7 @@ public class GameClearSound : MonoBehaviour
     {
         gameClearSound = GetComponent<AudioSource>();
         gameClearSound.Play();
+        title.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class GameClearSound : MonoBehaviour
         {
             gameClearSound.Stop();
             End.SetActive(true);
+            title.SetActive(true);
         }
     }
 }

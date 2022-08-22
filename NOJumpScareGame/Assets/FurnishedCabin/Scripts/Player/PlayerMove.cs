@@ -20,6 +20,8 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         playerWalkSound = GetComponent<AudioSource>();
+
+        playerWalkSound.Play();
     }
 
     private void Update()
@@ -39,6 +41,6 @@ public class PlayerMove : MonoBehaviour
         //simple move applies delta time automatically
         charController.SimpleMove(forwardMovement + rightMovement);
 
-        playerWalkSound.Play();
+        
     }
 }

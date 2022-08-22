@@ -10,6 +10,7 @@ public class PlayerRaycasting : MonoBehaviour
     private Camera cam;
     public LayerMask layerMask;
     public LayerMask layerMask2;
+    public GameObject LightSmudging;
 
     private float MaxRay = 7f;
     private float num = 0f;
@@ -40,6 +41,7 @@ public class PlayerRaycasting : MonoBehaviour
                 {
                     hit.collider.transform.gameObject.SetActive(false);
                     num = 0f;
+                    LightSmudging.SetActive(true);
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && num < 5f)
                 {
@@ -51,6 +53,10 @@ public class PlayerRaycasting : MonoBehaviour
         {
             tri.SetActive(false);
             Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
+            if (num > 0.05f)
+            {
+                LightSmudging.SetActive(false);
+            }
         }
         if (num > 5f)
         {

@@ -10,7 +10,7 @@ public class PlayerLook : MonoBehaviour
 
     [SerializeField] private Transform playerBody;
     private float xAxisClamp;
-    private bool m_cursorIsLocked = true;
+    // private bool m_cursorIsLocked = true;
 
     private void Awake()
     {
@@ -21,25 +21,25 @@ public class PlayerLook : MonoBehaviour
     private void LockCursor()
     {
        
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            m_cursorIsLocked = false;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            m_cursorIsLocked = true;
-        }
+        //if (Input.GetKeyUp(KeyCode.Escape))
+        //{
+        //    m_cursorIsLocked = false;
+        //}
+        //else if (Input.GetMouseButtonUp(0))
+        //{
+        //    m_cursorIsLocked = true;
+        //}
 
-        if (m_cursorIsLocked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else if (!m_cursorIsLocked)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        //if (m_cursorIsLocked)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //}
+        //else if (!m_cursorIsLocked)
+        //{
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
         
     }
 
