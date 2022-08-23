@@ -39,8 +39,6 @@ public class GameManager : MonoBehaviour
         thisTimeText();
         SetPanel();
         dieing();
-        Debug.Log(DeiCounts.setActiveCounts);
-        Debug.Log(dieingColorA.a);
     }
 
     private void thisTimeText()
