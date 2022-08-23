@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject PanelDie;
     public GameObject Player;
     public GameObject DieCam;
+    public GameObject easyModeMaker;
 
     private Pictures DeiCounts;
     private Color dieingColorA;
@@ -62,7 +63,9 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            DieingPanel.SetActive(false);
             Panel.SetActive(true);
+
             Time.timeScale = 0f;
         }
     }
@@ -70,12 +73,15 @@ public class GameManager : MonoBehaviour
     public void ExitPanel()
     {
         Panel.SetActive(false);
+        DieingPanel.SetActive(true);
+
         Time.timeScale = 1f;
     }
 
     public void GoTitle()
     {
         Panel.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScene");
     }
 
@@ -136,6 +142,19 @@ public class GameManager : MonoBehaviour
             dieingColorA.a = 0f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
+    }
+
+    public void ToggleClick(bool isOn)
+    {
+        if (isOn)
+        {
+            easyModeMaker.SetActive(false);
+        }
+        else 
+        {
+            easyModeMaker.SetActive(true);
+        }
+
     }
 }
 

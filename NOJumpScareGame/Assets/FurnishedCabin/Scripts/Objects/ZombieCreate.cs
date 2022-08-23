@@ -28,10 +28,10 @@ public class ZombieCreate : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(60f);
 
             num = Random.Range(0, 5);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
-            yield return new WaitForSeconds(60f);
             ++DeiCounts.setActiveCounts;
         }
 

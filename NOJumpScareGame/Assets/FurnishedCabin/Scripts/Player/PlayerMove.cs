@@ -14,7 +14,6 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] 
     private float movementSpeed = 4f;
-    private float num;
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
@@ -58,30 +57,16 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Problem")
+        if (other.tag == "FlyingKick")
         {
-            num += Time.deltaTime;
-            
-            Debug.Log("Á»ºñ¶û ´êÀ½");
-            Debug.Log(num);
-            if (num > 4f)
-            {
-                Debug.Log("³¡");
-                DieingPanel.SetActive(false);
-                gameObject.SetActive(false);
-                PanelDie.SetActive(true);
-                DieCam.SetActive(true);
-            }
+            DieingPanel.SetActive(false);
+            gameObject.SetActive(false);
+            PanelDie.SetActive(true);
+            DieCam.SetActive(true);
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Problem")
-        {
-            num = 0f;
-        }
-    }
+    
 }
