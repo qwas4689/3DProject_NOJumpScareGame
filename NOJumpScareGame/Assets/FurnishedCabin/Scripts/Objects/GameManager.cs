@@ -16,11 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject easyModeMaker;
 
     private Pictures DeiCounts;
+    private AudioSource MainSound;
     private Color dieingColorA;
 
     //public GameObject gameOverText;
     private float thisTime;
-    private float timeSpeed = 0.02f;
+    private float timeSpeed = 0.0205f;
     private bool overTime;
 
     // private bool isGameOver;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
         thisTime = 22;
         Panel.SetActive(false);
         dieingColorA = DieingPanel.GetComponent<Image>().color;
-
+        MainSound = GetComponent<AudioSource>();
+        MainSound.Play();
     }
 
     void Update()
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             DieingPanel.SetActive(false);
             Panel.SetActive(true);
+            MainSound.Pause();
 
             Time.timeScale = 0f;
         }
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         Panel.SetActive(false);
         DieingPanel.SetActive(true);
+        MainSound.UnPause();
 
         Time.timeScale = 1f;
     }
@@ -93,46 +97,46 @@ public class GameManager : MonoBehaviour
 
         else if (DeiCounts.setActiveCounts == 2)
         {
-            dieingColorA.a = 0.15f;
+            dieingColorA.a = 0.1f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
 
         else if (DeiCounts.setActiveCounts == 3)
         {
-            dieingColorA.a = 0.25f;
+            dieingColorA.a = 0.15f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
 
         else if (DeiCounts.setActiveCounts == 4)
         {
-            dieingColorA.a = 0.35f;
+            dieingColorA.a = 0.2f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
 
         else if (DeiCounts.setActiveCounts == 5)
         {
-            dieingColorA.a = 0.45f;
+            dieingColorA.a = 0.25f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
 
         else if (DeiCounts.setActiveCounts == 6)
         {
-            dieingColorA.a = 0.55f;
+            dieingColorA.a = 0.3f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
 
         else if (DeiCounts.setActiveCounts == 7)
         {
-            dieingColorA.a = 0.65f;
+            dieingColorA.a = 0.35f;
             DieingPanel.GetComponent<Image>().color = dieingColorA;
         }
 
         else if (DeiCounts.setActiveCounts == 8)
         {
-            DieingPanel.SetActive(false);
-            Player.SetActive(false);
-            PanelDie.SetActive(true);
-            DieCam.SetActive(true);
+            //DieingPanel.SetActive(false);
+            //Player.SetActive(false);
+            //PanelDie.SetActive(true);
+            //DieCam.SetActive(true);
         }
 
         else

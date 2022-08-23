@@ -24,7 +24,6 @@ public class TitleButtons : MonoBehaviour
 
     public void SettingPanelExit()
     {
-        Debug.Log("Aasd");
         prefab.SetActive(true);
         SettingPanel.SetActive(false);
     }
