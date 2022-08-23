@@ -11,7 +11,7 @@ public class LayingZombie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("layingZombie");
+        StartCoroutine(layingZombie());
     }
 
     // Update is called once per frame
@@ -28,7 +28,6 @@ public class LayingZombie : MonoBehaviour
 
             int num;
             num = Random.Range(0, 2);
-            Debug.Log(num);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
 
         }

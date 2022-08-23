@@ -13,7 +13,7 @@ public class ZombieCreate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("createZombie");
+        StartCoroutine(createZombie());
     }
 
     // Update is called once per frame
@@ -26,11 +26,11 @@ public class ZombieCreate : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(60f);
 
             num = Random.Range(0, 5);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
 
-            yield return new WaitForSeconds(60f);
         }
 
     }
