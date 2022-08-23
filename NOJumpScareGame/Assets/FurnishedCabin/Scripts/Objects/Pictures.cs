@@ -8,6 +8,9 @@ public class Pictures : MonoBehaviour
     List<GameObject> li = new List<GameObject>();
     List<GameObject> fixLi = new List<GameObject>();
 
+    public int setActiveCounts = 0;
+
+        
     void Start()
     {
         randList();
@@ -26,8 +29,8 @@ public class Pictures : MonoBehaviour
             li.Add(gameObjects[i]);
         }
 
-        bool[] lists = new bool[6];
-        int num = Random.Range(0, 6);
+        bool[] lists = new bool[gameObjects.Length];
+        int num = Random.Range(0, gameObjects.Length);
 
         while (!(fixLi.Count == gameObjects.Length))
         {
@@ -38,18 +41,19 @@ public class Pictures : MonoBehaviour
             }
             else
             {
-                num = Random.Range(0, 6);
+                num = Random.Range(0, gameObjects.Length);
             }
         }
     }
 
     IEnumerator enumerator()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
         int i = 0;
         while(true)
         {
             fixLi[i].SetActive(true);
+            ++setActiveCounts;
             ++i;
             yield return new WaitForSeconds(10f);
             if (i == 5)

@@ -25,7 +25,9 @@ public class Following : MonoBehaviour
         target = GameObject.Find("PlayerFPS").transform;
 
         if (isFind)
+        {
             moveTo(target);
+        }
     }
 
     public void moveTo(Transform goalPosition)

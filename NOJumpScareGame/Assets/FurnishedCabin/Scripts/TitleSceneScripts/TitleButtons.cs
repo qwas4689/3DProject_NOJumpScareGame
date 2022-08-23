@@ -12,6 +12,8 @@ public class TitleButtons : MonoBehaviour
     public void StartButtonClick()
     {
         SceneManager.LoadScene("MainSCenes");
+
+        Time.timeScale = 1f;
     }
 
     public void SettingButtonClick()

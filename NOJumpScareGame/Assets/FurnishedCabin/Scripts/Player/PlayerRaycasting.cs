@@ -8,9 +8,14 @@ public class PlayerRaycasting : MonoBehaviour
     private Ray ray;
 
     private Camera cam;
+    private AudioSource cameraSound;
+    private Pictures DeiCounts;
+
     public LayerMask layerMask;
     public LayerMask layerMask2;
     public GameObject LightSmudging;
+    public AudioClip cameraClip;
+
 
     private float MaxRay = 7f;
     private float num = 0f;
@@ -22,7 +27,8 @@ public class PlayerRaycasting : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-
+        cameraSound = GetComponent<AudioSource>();
+        DeiCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
     }
 
     void LateUpdate()
@@ -42,6 +48,9 @@ public class PlayerRaycasting : MonoBehaviour
                     hit.collider.transform.gameObject.SetActive(false);
                     num = 0f;
                     LightSmudging.SetActive(true);
+
+                    cameraSound.PlayOneShot(cameraClip);
+                    --DeiCounts.setActiveCounts;
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && num < 5f)
                 {
