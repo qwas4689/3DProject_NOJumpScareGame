@@ -15,10 +15,16 @@ public class PlayerRaycasting : MonoBehaviour
     public LayerMask layerMask2;
     public GameObject LightSmudging;
     public AudioClip cameraClip;
+    public GameObject phoneCam;
+    public GameObject phoneCamWalking;
+    public GameObject phoneCamCooltimeOver;
 
 
     private float MaxRay = 7f;
     private float num = 0f;
+    private bool isInputE = false;
+    private GameObject hitTarget;
+
 
     public GameObject tri;
     public GameObject cooltime;
@@ -40,17 +46,24 @@ public class PlayerRaycasting : MonoBehaviour
         if (Physics.Raycast(ray, out hit, MaxRay, layerMask) || Physics.Raycast(ray, out hit, MaxRay, layerMask2))
         {
             Debug.DrawRay(ray.origin, ray.direction * 5, Color.green);
-            tri.SetActive(true);
             if (hit.collider.tag == "Problem" || hit.collider.tag == "CantSee")
             {
-                if (Input.GetKeyDown(KeyCode.E) && num > 5f)
+            tri.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E) && num > 5f && isInputE == false)
                 {
-                    hit.collider.transform.gameObject.SetActive(false);
+                    hit.collider.gameObject.layer = 7;
+                    hitTarget = hit.collider.transform.gameObject;
+
                     num = 0f;
+                    isInputE = true;
+                    tri.SetActive(false);
                     LightSmudging.SetActive(true);
 
                     cameraSound.PlayOneShot(cameraClip);
                     --DeiCounts.setActiveCounts;
+
+                    phoneCam.GetComponent<PlayerLook>().enabled = false;
+                    phoneCam.transform.SetParent(phoneCamWalking.transform);
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && num < 5f)
                 {
@@ -67,9 +80,15 @@ public class PlayerRaycasting : MonoBehaviour
                 LightSmudging.SetActive(false);
             }
         }
-        if (num > 5f)
+        if (num > 5f && isInputE == true)
         {
+            hitTarget.SetActive(false);
             cooltime.SetActive(false);
+            isInputE = false;
+            phoneCam.GetComponent<PlayerLook>().enabled = true;
+            phoneCam.transform.localPosition = phoneCamCooltimeOver.transform.localPosition;
+            phoneCam.transform.localRotation = phoneCamCooltimeOver.transform.localRotation;
+            phoneCam.transform.SetParent(phoneCamCooltimeOver.transform);
         }
         
     }

@@ -50,13 +50,22 @@ public class Pictures : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         int i = 0;
-        while(true)
+        while (true)
         {
             fixLi[i].SetActive(true);
+            if (fixLi[i].name == "Cube(5)")
+            {
+                fixLi[i].layer = 7;
+            }
+            else
+            {
+                fixLi[i].layer = 6;
+            }
+
             ++setActiveCounts;
             ++i;
             yield return new WaitForSeconds(10f);
-            if (i == 5)
+            if (i == 6)
             {
                 i = 0;
             }

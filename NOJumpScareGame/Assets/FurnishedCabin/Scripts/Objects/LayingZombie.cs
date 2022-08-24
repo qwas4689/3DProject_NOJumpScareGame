@@ -25,6 +25,7 @@ public class LayingZombie : MonoBehaviour
             int num;
             num = Random.Range(0, 2);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
+            zombieprefab.layer = 6;
             ++DieCounts.setActiveCounts;
 
         }
