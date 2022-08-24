@@ -133,10 +133,10 @@ public class GameManager : MonoBehaviour
 
         else if (DeiCounts.setActiveCounts == 8)
         {
-            //DieingPanel.SetActive(false);
-            //Player.SetActive(false);
-            //PanelDie.SetActive(true);
-            //DieCam.SetActive(true);
+            DieingPanel.SetActive(false);
+            Player.SetActive(false);
+            PanelDie.SetActive(true);
+            DieCam.SetActive(true);
         }
 
         else
