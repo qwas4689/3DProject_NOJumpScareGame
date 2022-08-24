@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     public Text dieText;
-    
+   // public GameObject GameEnd;
 
     private string[] YouDei;
 
@@ -23,7 +23,7 @@ public class GameOver : MonoBehaviour
         YouDei[5] = "I";
         YouDei[6] = "E";
 
-
+     //   GameEnd.SetActive(false);
 
         StartCoroutine(DIEText());
     }

@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject PanelDie;
     public GameObject DieingPanel;
     public GameObject DieCam;
+    public GameObject gameManager;
 
     [SerializeField] 
     private float movementSpeed = 4f;
@@ -65,6 +66,7 @@ public class PlayerMove : MonoBehaviour
             gameObject.SetActive(false);
             PanelDie.SetActive(true);
             DieCam.SetActive(true);
+            gameManager.GetComponent<GameManager>().MainSound.Pause();
         }
     }
 

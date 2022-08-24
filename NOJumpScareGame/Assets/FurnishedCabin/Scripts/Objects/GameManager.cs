@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject easyModeMaker;
 
     private Pictures DeiCounts;
-    private AudioSource MainSound;
+    public AudioSource MainSound;
     private Color dieingColorA;
 
     //public GameObject gameOverText;
@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
             Player.SetActive(false);
             PanelDie.SetActive(true);
             DieCam.SetActive(true);
+            MainSound.Pause();
         }
 
         else
