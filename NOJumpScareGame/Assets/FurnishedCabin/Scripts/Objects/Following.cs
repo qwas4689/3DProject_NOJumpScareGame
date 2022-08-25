@@ -32,33 +32,31 @@ public class Following : MonoBehaviour
 
     public void moveTo(Transform goalPosition)
     {
-        StopCoroutine("onMove");
+        // StopCoroutine("onMove");
 
         navMeshAgent.speed = moveSpeed;
 
         navMeshAgent.SetDestination(goalPosition.position);
 
-        StartCoroutine("onMove");
+        // StartCoroutine("onMove");
     }
 
-    IEnumerator onMove()
-    {
-        while (true)
-        {
-            if (Vector3.Distance(navMeshAgent.destination, transform.position) < 0.1f)
-            {
-                transform.position = navMeshAgent.destination;
+    //IEnumerator onMove()
+    //{
+    //    while (true)
+    //    {
+    //        if (Vector3.Distance(navMeshAgent.destination, transform.position) < 0.1f)
+    //        {
+    //            transform.position = navMeshAgent.destination;
 
-                navMeshAgent.ResetPath();
+    //            navMeshAgent.ResetPath();
 
-                break;
-            }
+    //            break;
+    //        }
 
-            yield return null;
-        }
-    }
-
-    
+    //        yield return null;
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -83,6 +81,5 @@ public class Following : MonoBehaviour
 
             yield break;
         }
-
     }
 }

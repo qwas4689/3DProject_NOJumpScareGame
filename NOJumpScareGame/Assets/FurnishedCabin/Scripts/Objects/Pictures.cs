@@ -48,7 +48,7 @@ public class Pictures : MonoBehaviour
 
     IEnumerator enumerator()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(30f);
         int i = 0;
         while (true)
         {
@@ -64,7 +64,7 @@ public class Pictures : MonoBehaviour
 
             ++setActiveCounts;
             ++i;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(40f);
             if (i == 6)
             {
                 i = 0;

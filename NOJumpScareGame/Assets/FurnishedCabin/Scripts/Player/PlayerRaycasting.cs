@@ -35,6 +35,7 @@ public class PlayerRaycasting : MonoBehaviour
         cam = Camera.main;
         cameraSound = GetComponent<AudioSource>();
         DeiCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
+        phoneCam.transform.localRotation = phoneCamCooltimeOver.transform.localRotation;
     }
 
     void LateUpdate()
@@ -86,9 +87,9 @@ public class PlayerRaycasting : MonoBehaviour
             cooltime.SetActive(false);
             isInputE = false;
             phoneCam.GetComponent<PlayerLook>().enabled = true;
+            phoneCam.transform.SetParent(phoneCamCooltimeOver.transform);
             phoneCam.transform.localPosition = phoneCamCooltimeOver.transform.localPosition;
             phoneCam.transform.localRotation = phoneCamCooltimeOver.transform.localRotation;
-            phoneCam.transform.SetParent(phoneCamCooltimeOver.transform);
         }
         
     }
