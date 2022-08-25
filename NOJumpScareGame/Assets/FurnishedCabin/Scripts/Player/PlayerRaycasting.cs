@@ -42,7 +42,10 @@ public class PlayerRaycasting : MonoBehaviour
         num += Time.deltaTime;
 
         ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        
+        if (num > 0.05f)
+        {
+            LightSmudging.SetActive(false);
+        }
         if (Physics.Raycast(ray, out hit, MaxRay, layerMask) || Physics.Raycast(ray, out hit, MaxRay, layerMask2))
         {
             Debug.DrawRay(ray.origin, ray.direction * 5, Color.green);
@@ -75,10 +78,7 @@ public class PlayerRaycasting : MonoBehaviour
         {
             tri.SetActive(false);
             Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
-            if (num > 0.05f)
-            {
-                LightSmudging.SetActive(false);
-            }
+            
         }
         if (num > 5f && isInputE == true)
         {

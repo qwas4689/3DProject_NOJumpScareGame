@@ -14,13 +14,14 @@ public class PlayerLook : MonoBehaviour
 
     private void Awake()
     {
-        // LockCursor();
+        LockCursor();
+        Cursor.visible = false;
         xAxisClamp = 0.0f;
     }
 
     private void LockCursor()
     {
-       
+
         //if (Input.GetKeyUp(KeyCode.Escape))
         //{
         //    m_cursorIsLocked = false;
@@ -40,7 +41,12 @@ public class PlayerLook : MonoBehaviour
         //    Cursor.lockState = CursorLockMode.None;
         //    Cursor.visible = true;
         //}
-        
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Cursor.visible = false;
+        }
+
     }
 
     private void Update()

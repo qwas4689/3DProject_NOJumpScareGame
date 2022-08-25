@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         Panel.SetActive(false);
         DieingPanel.SetActive(true);
         MainSound.UnPause();
+        Cursor.visible = false;
 
         Time.timeScale = 1f;
     }
