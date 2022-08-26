@@ -6,12 +6,9 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     public Text dieText;
-   // public GameObject GameEnd;
 
     private string[] YouDei;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         YouDei = new string[7];
@@ -23,15 +20,7 @@ public class GameOver : MonoBehaviour
         YouDei[5] = "I";
         YouDei[6] = "E";
 
-     //   GameEnd.SetActive(false);
-
         StartCoroutine(DIEText());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator DIEText()
@@ -42,7 +31,6 @@ public class GameOver : MonoBehaviour
 
             yield return new WaitForSeconds(0.3f);
         }
-
         
         yield break;
     }

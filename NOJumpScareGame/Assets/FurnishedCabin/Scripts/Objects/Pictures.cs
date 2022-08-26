@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class Pictures : MonoBehaviour
 {
-    public GameObject[] gameObjects;
     List<GameObject> li = new List<GameObject>();
     List<GameObject> fixLi = new List<GameObject>();
 
+    public GameObject[] gameObjects;
+
     public int setActiveCounts = 0;
 
-        
     void Start()
     {
         randList();
         StartCoroutine(enumerator());
-    }
-
-    void Update()
-    {
-            
     }
 
     void randList()
@@ -49,26 +44,28 @@ public class Pictures : MonoBehaviour
     IEnumerator enumerator()
     {
         yield return new WaitForSeconds(30f);
+
         int i = 0;
+
         while (true)
         {
             fixLi[i].SetActive(true);
+
             if (fixLi[i].name == "Cube(5)")
-            {
                 fixLi[i].layer = 7;
-            }
+
             else
-            {
                 fixLi[i].layer = 6;
-            }
+
 
             ++setActiveCounts;
             ++i;
+
             yield return new WaitForSeconds(40f);
+
             if (i == 6)
-            {
                 i = 0;
-            }
+
         }
     }
 }

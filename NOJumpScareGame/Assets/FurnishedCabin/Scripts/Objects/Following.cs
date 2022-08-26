@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class Following : MonoBehaviour
 {
-    private float moveSpeed = 0.5f;
     private NavMeshAgent navMeshAgent;
     private Animator ani;
-    private bool isFind;
     private AudioSource zombieSound;
-
     private Transform target;
+
+    private float moveSpeed = 0.5f;
+    private bool isFind;
 
     void Start()
     {
@@ -32,31 +32,10 @@ public class Following : MonoBehaviour
 
     public void moveTo(Transform goalPosition)
     {
-        // StopCoroutine("onMove");
-
         navMeshAgent.speed = moveSpeed;
 
         navMeshAgent.SetDestination(goalPosition.position);
-
-        // StartCoroutine("onMove");
     }
-
-    //IEnumerator onMove()
-    //{
-    //    while (true)
-    //    {
-    //        if (Vector3.Distance(navMeshAgent.destination, transform.position) < 0.1f)
-    //        {
-    //            transform.position = navMeshAgent.destination;
-
-    //            navMeshAgent.ResetPath();
-
-    //            break;
-    //        }
-
-    //        yield return null;
-    //    }
-    //}
 
     private void OnTriggerEnter(Collider other)
     {

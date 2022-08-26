@@ -158,8 +158,5 @@ public class GameManager : MonoBehaviour
         {
             easyModeMaker.SetActive(true);
         }
-
     }
 }
-
-

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class LayingZombie : MonoBehaviour
 {
-    public GameObject zombieprefab;
-
-    public GameObject[] create;
-
     private Pictures DieCounts;
+
+    public GameObject zombieprefab;
+    public GameObject[] create;
 
     void Start()
     {
@@ -27,8 +26,6 @@ public class LayingZombie : MonoBehaviour
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
             zombieprefab.layer = 6;
             ++DieCounts.setActiveCounts;
-
         }
-
     }
 }

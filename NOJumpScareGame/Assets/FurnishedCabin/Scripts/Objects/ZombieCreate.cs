@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class ZombieCreate : MonoBehaviour
 {
-    public GameObject zombieprefab;
+    private Pictures DeiCounts;
 
+    public GameObject zombieprefab;
     public GameObject[] create;
 
-    private Pictures DeiCounts;
     private int num;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(createZombie());
         DeiCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator createZombie()

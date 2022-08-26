@@ -39,8 +39,8 @@ public class Cam : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && isActive == true)
         {
-            isPhoneOff = true;
             isPhoneOn = false;
+            isPhoneOff = true;
         }
     }
 
@@ -80,8 +80,5 @@ public class Cam : MonoBehaviour
         }
     }
 
-    void camOn()
-    {
-        cam.SetActive(true);
-    }
+    void camOn() => cam.SetActive(true);
 }
