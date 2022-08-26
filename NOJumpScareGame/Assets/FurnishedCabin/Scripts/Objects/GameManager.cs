@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public GameObject DieCam;
     public GameObject easyModeMaker;
+    public UnityEvent ChangeEasyMode = new UnityEvent();
+    public UnityEvent ChangeNotEasyMode = new UnityEvent();
 
     private Pictures DeiCounts;
     public AudioSource MainSound;
@@ -148,17 +151,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ToggleClick(bool isOn)
+    public void ToggleClick(bool IsOn)
     {
-        if (isOn)
+        if(IsOn)
         {
-            easyModeMaker.SetActive(false);
+            ChangeEasyMode.Invoke();
         }
-        else 
+        else
         {
-            easyModeMaker.SetActive(true);
+            ChangeNotEasyMode.Invoke();
         }
-
     }
 }
 

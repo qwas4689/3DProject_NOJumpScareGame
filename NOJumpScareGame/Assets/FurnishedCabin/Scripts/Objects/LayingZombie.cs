@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class LayingZombie : MonoBehaviour
 {
-    public GameObject zombieprefab;
-
-    public GameObject[] create;
-
     private Pictures DieCounts;
+
+    private float layingZombies;
+
+    public GameObject gameManager;
+    public GameObject zombieprefab;
+    public GameObject[] create;
+    public GameObject CSV;
+
+    public bool easyMode { get; private set; }
+
+    private void OnEnable()
+    {
+        gameManager.GetComponent<GameManager>().ChangeEasyMode.RemoveListener(EasyMode);
+        gameManager.GetComponent<GameManager>().ChangeEasyMode.AddListener(EasyMode);
+
+
+        gameManager.GetComponent<GameManager>().ChangeNotEasyMode.RemoveListener(NotEasyMode);
+        gameManager.GetComponent<GameManager>().ChangeNotEasyMode.AddListener(NotEasyMode);
+    }
 
     void Start()
     {
+        easyMode = false;
+        layingZombies = CSV.GetComponent<CsvCoolTime>().layingZombies;
         StartCoroutine(layingZombie());
         DieCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
+        Debug.Log(layingZombies);
     }
 
     IEnumerator layingZombie()
     {
         while (true)
         {
-            yield return new WaitForSeconds(120f);
+            if (easyMode)
+                yield return new WaitForSeconds(Mathf.Infinity);
+            if (!easyMode)
+                yield return new WaitForSeconds(layingZombies);
 
             int num;
             num = Random.Range(0, 2);
@@ -30,5 +51,25 @@ public class LayingZombie : MonoBehaviour
 
         }
 
+    }
+
+    void EasyMode()
+    {
+        StopAllCoroutines();
+        easyMode = true;
+        StartCoroutine(layingZombie());
+    }
+
+    void NotEasyMode()
+    {
+        StopAllCoroutines();
+        easyMode = false;
+        StartCoroutine(layingZombie());
+    }
+
+    void OnDisable()
+    {
+        gameManager.GetComponent<GameManager>().ChangeEasyMode.RemoveListener(EasyMode);
+        gameManager.GetComponent<GameManager>().ChangeNotEasyMode.RemoveListener(NotEasyMode);
     }
 }

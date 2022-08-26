@@ -5,35 +5,68 @@ using UnityEngine;
 public class ZombieCreate : MonoBehaviour
 {
     public GameObject zombieprefab;
-
     public GameObject[] create;
+    public GameObject CSV;
+    public GameObject gameManager;
+
+    public float followZombies;
+    public bool easyMode { get; private set; }
 
     private Pictures DeiCounts;
     private int num;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        StartCoroutine(createZombie());
-        DeiCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
+        gameManager.GetComponent<GameManager>().ChangeEasyMode.RemoveListener(EasyMode);
+        gameManager.GetComponent<GameManager>().ChangeEasyMode.AddListener(EasyMode);
+
+
+        gameManager.GetComponent<GameManager>().ChangeNotEasyMode.RemoveListener(NotEasyMode);
+        gameManager.GetComponent<GameManager>().ChangeNotEasyMode.AddListener(NotEasyMode);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        followZombies = CSV.GetComponent<CsvCoolTime>().followZombies;
+        StartCoroutine(createZombie());
+        DeiCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
+        Debug.Log(followZombies);
     }
 
     IEnumerator createZombie()
     {
         while (true)
         {
-            yield return new WaitForSeconds(60f);
+            if (easyMode)
+                yield return new WaitForSeconds(Mathf.Infinity);
+            if (!easyMode)
+            yield return new WaitForSeconds(followZombies);
+
             num = Random.Range(0, 5);
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
             zombieprefab.layer = 6;
             ++DeiCounts.setActiveCounts;
         }
 
+    }
+
+    void EasyMode()
+    {
+        StopAllCoroutines();
+        easyMode = true;
+        StartCoroutine(createZombie());
+    }
+
+    void NotEasyMode()
+    {
+        StopAllCoroutines();
+        easyMode = false;
+        StartCoroutine(createZombie());
+    }
+
+    void OnDisable()
+    {
+        gameManager.GetComponent<GameManager>().ChangeEasyMode.RemoveListener(EasyMode);
+        gameManager.GetComponent<GameManager>().ChangeNotEasyMode.RemoveListener(NotEasyMode);
     }
 }

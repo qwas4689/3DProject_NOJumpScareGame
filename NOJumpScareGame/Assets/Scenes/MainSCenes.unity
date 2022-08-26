@@ -10408,6 +10408,7 @@ MonoBehaviour:
   - {fileID: 1983498739}
   - {fileID: 1006849075}
   - {fileID: 1749446289}
+  CSV: {fileID: 1802449357}
   setActiveCounts: 0
 --- !u!4 &1500940391
 Transform:
@@ -10787,6 +10788,9 @@ MonoBehaviour:
   - {fileID: 639729731}
   - {fileID: 225154871}
   - {fileID: 1566867406}
+  CSV: {fileID: 1802449357}
+  gameManager: {fileID: 1893795053}
+  followZombies: 0
 --- !u!4 &1530673670
 Transform:
   m_ObjectHideFlags: 0
@@ -10814,10 +10818,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fb46635e248944d8d6183f3a199bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1893795053}
   zombieprefab: {fileID: 9077998625205518444, guid: 52e124d0e95d3a445ae8698704cf2908, type: 3}
   create:
   - {fileID: 1131209323}
   - {fileID: 482624633}
+  CSV: {fileID: 1802449357}
 --- !u!1 &1536307633
 GameObject:
   m_ObjectHideFlags: 0
@@ -12326,6 +12332,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000011018076642, guid: 0ed008a5c5ee53c49a715afe02ba2651, type: 3}
   m_PrefabInstance: {fileID: 1800201339}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1802449357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802449359}
+  - component: {fileID: 1802449358}
+  m_Layer: 0
+  m_Name: CSV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1802449358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802449357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027c583e1255d394ab7a85c64a5d66cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pictures: 0
+  followZombies: 0
+  layingZombies: 0
+--- !u!4 &1802449359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802449357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1847682292
 GameObject:
   m_ObjectHideFlags: 0
@@ -12789,6 +12842,12 @@ MonoBehaviour:
   Player: {fileID: 238072572}
   DieCam: {fileID: 1009454362}
   easyModeMaker: {fileID: 1530673668}
+  ChangeEasyMode:
+    m_PersistentCalls:
+      m_Calls: []
+  ChangeNotEasyMode:
+    m_PersistentCalls:
+      m_Calls: []
   MainSound: {fileID: 0}
 --- !u!4 &1893795055
 Transform:

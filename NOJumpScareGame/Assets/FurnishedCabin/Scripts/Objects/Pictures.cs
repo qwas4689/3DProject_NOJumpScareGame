@@ -5,16 +5,19 @@ using UnityEngine;
 public class Pictures : MonoBehaviour
 {
     public GameObject[] gameObjects;
+    public GameObject CSV;
     List<GameObject> li = new List<GameObject>();
     List<GameObject> fixLi = new List<GameObject>();
 
     public int setActiveCounts = 0;
-
+    private float pictures;
         
     void Start()
     {
         randList();
+        pictures = CSV.GetComponent<CsvCoolTime>().pictures;
         StartCoroutine(enumerator());
+        Debug.Log(pictures);
     }
 
     void Update()
@@ -64,7 +67,7 @@ public class Pictures : MonoBehaviour
 
             ++setActiveCounts;
             ++i;
-            yield return new WaitForSeconds(40f);
+            yield return new WaitForSeconds(pictures);
             if (i == 6)
             {
                 i = 0;
