@@ -36,6 +36,12 @@ public class GAMECLEARTEXT : MonoBehaviour
         StartCoroutine(endText());
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     IEnumerator endText()
     {
         for (int i = 0; i < 16; ++i)
@@ -44,6 +50,7 @@ public class GAMECLEARTEXT : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
+
         
         yield break;
     }

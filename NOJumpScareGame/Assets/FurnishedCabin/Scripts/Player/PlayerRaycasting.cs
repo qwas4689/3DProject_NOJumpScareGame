@@ -10,22 +10,25 @@ public class PlayerRaycasting : MonoBehaviour
     private Camera cam;
     private AudioSource cameraSound;
     private Pictures DeiCounts;
-    private GameObject hitTarget;
 
     public LayerMask layerMask;
     public LayerMask layerMask2;
-
-    public AudioClip cameraClip;
     public GameObject LightSmudging;
+    public AudioClip cameraClip;
     public GameObject phoneCam;
     public GameObject phoneCamWalking;
     public GameObject phoneCamCooltimeOver;
-    public GameObject cooltime;
-    public GameObject tri;
+
 
     private float MaxRay = 7f;
     private float num = 0f;
     private bool isInputE = false;
+    private GameObject hitTarget;
+
+
+    public GameObject tri;
+    public GameObject cooltime;
+
 
     void Start()
     {
@@ -40,14 +43,13 @@ public class PlayerRaycasting : MonoBehaviour
         num += Time.deltaTime;
 
         ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
         if (num > 0.05f)
         {
             LightSmudging.SetActive(false);
         }
-
         if (Physics.Raycast(ray, out hit, MaxRay, layerMask) || Physics.Raycast(ray, out hit, MaxRay, layerMask2))
         {
+            Debug.DrawRay(ray.origin, ray.direction * 5, Color.green);
             if (hit.collider.tag == "Problem" || hit.collider.tag == "CantSee")
             {
             tri.SetActive(true);
@@ -76,8 +78,9 @@ public class PlayerRaycasting : MonoBehaviour
         else
         {
             tri.SetActive(false);
+            Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
+            
         }
-
         if (num > 5f && isInputE == true)
         {
             hitTarget.SetActive(false);
@@ -88,5 +91,10 @@ public class PlayerRaycasting : MonoBehaviour
             phoneCam.transform.localPosition = phoneCamCooltimeOver.transform.localPosition;
             phoneCam.transform.localRotation = phoneCamCooltimeOver.transform.localRotation;
         }
+        
     }
+
+ 
+    
+
 }

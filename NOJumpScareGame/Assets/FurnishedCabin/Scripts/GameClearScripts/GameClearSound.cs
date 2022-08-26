@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameClearSound : MonoBehaviour
 {
     private AudioSource gameClearSound;
-
     public GameObject End;
+
     public GameObject title;
 
     private float wasteTime = 0;
 
+    // Start is called before the first frame update
     void Start()
     {
         gameClearSound = GetComponent<AudioSource>();
@@ -18,12 +19,8 @@ public class GameClearSound : MonoBehaviour
         title.SetActive(false);
     }
 
+    // Update is called once per frame
     void Update()
-    {
-        gameClearSoundPitch();
-    }
-
-    private void gameClearSoundPitch()
     {
         wasteTime += Time.deltaTime;
         if (wasteTime > 5f)
