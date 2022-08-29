@@ -75,6 +75,7 @@ public class Following : MonoBehaviour
             transform.LookAt(target);
             ani.SetTrigger("doScream");
 
+
             yield return new WaitForSeconds(2.5f);
 
             isFind = true;
