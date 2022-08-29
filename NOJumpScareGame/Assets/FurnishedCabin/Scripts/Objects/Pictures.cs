@@ -17,12 +17,6 @@ public class Pictures : MonoBehaviour
         randList();
         pictures = CSV.GetComponent<CsvCoolTime>().pictures;
         StartCoroutine(enumerator());
-        Debug.Log(pictures);
-    }
-
-    void Update()
-    {
-            
     }
 
     void randList()

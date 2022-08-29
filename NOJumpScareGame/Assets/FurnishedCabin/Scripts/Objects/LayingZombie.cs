@@ -31,7 +31,6 @@ public class LayingZombie : MonoBehaviour
         layingZombies = CSV.GetComponent<CsvCoolTime>().layingZombies;
         StartCoroutine(layingZombie());
         DieCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
-        Debug.Log(layingZombies);
     }
 
     IEnumerator layingZombie()
@@ -48,9 +47,7 @@ public class LayingZombie : MonoBehaviour
             Instantiate(zombieprefab, create[num].transform.position, create[num].transform.rotation);
             zombieprefab.layer = 6;
             ++DieCounts.setActiveCounts;
-
         }
-
     }
 
     void EasyMode()

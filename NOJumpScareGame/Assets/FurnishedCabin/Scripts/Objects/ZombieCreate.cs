@@ -20,7 +20,6 @@ public class ZombieCreate : MonoBehaviour
         gameManager.GetComponent<GameManager>().ChangeEasyMode.RemoveListener(EasyMode);
         gameManager.GetComponent<GameManager>().ChangeEasyMode.AddListener(EasyMode);
 
-
         gameManager.GetComponent<GameManager>().ChangeNotEasyMode.RemoveListener(NotEasyMode);
         gameManager.GetComponent<GameManager>().ChangeNotEasyMode.AddListener(NotEasyMode);
     }
@@ -30,7 +29,6 @@ public class ZombieCreate : MonoBehaviour
         followZombies = CSV.GetComponent<CsvCoolTime>().followZombies;
         StartCoroutine(createZombie());
         DeiCounts = GameObject.Find("Pictures").GetComponent<Pictures>();
-        Debug.Log(followZombies);
     }
 
     IEnumerator createZombie()

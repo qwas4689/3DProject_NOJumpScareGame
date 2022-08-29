@@ -49,10 +49,9 @@ public class PlayerRaycasting : MonoBehaviour
         }
         if (Physics.Raycast(ray, out hit, MaxRay, layerMask) || Physics.Raycast(ray, out hit, MaxRay, layerMask2))
         {
-            Debug.DrawRay(ray.origin, ray.direction * 5, Color.green);
             if (hit.collider.tag == "Problem" || hit.collider.tag == "CantSee")
             {
-            tri.SetActive(true);
+                tri.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E) && num > 5f && isInputE == false)
                 {
                     hit.collider.gameObject.layer = 7;
@@ -78,8 +77,6 @@ public class PlayerRaycasting : MonoBehaviour
         else
         {
             tri.SetActive(false);
-            Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
-            
         }
         if (num > 5f && isInputE == true)
         {
@@ -91,10 +88,5 @@ public class PlayerRaycasting : MonoBehaviour
             phoneCam.transform.localPosition = phoneCamCooltimeOver.transform.localPosition;
             phoneCam.transform.localRotation = phoneCamCooltimeOver.transform.localRotation;
         }
-        
     }
-
- 
-    
-
 }
