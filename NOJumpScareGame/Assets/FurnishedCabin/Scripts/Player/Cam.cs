@@ -31,13 +31,13 @@ public class Cam : MonoBehaviour
 
     private void camOnOff()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isActive == false)
+        if (OVRInput.GetDown(OVRInput.Button.Two) && isActive == false)
         {
             isPhoneOn = true;
             isPhoneOff = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && isActive == true)
+        if (OVRInput.GetDown(OVRInput.Button.Two) && isActive == true)
         {
             isPhoneOff = true;
             isPhoneOn = false;

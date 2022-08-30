@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OVR.OpenVR;
 
 public class PlayerRaycasting : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class PlayerRaycasting : MonoBehaviour
             if (hit.collider.tag == "Problem" || hit.collider.tag == "CantSee")
             {
                 tri.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.E) && num > 5f && isInputE == false)
+                if (OVRInput.GetDown(OVRInput.Button.One) && num > 5f && isInputE == false)
                 {
                     hit.collider.gameObject.layer = 7;
                     hitTarget = hit.collider.transform.gameObject;
@@ -68,7 +69,7 @@ public class PlayerRaycasting : MonoBehaviour
                     phoneCam.GetComponent<PlayerLook>().enabled = false;
                     phoneCam.transform.SetParent(phoneCamWalking.transform);
                 }
-                else if (Input.GetKeyDown(KeyCode.E) && num < 5f)
+                else if (OVRInput.GetDown(OVRInput.Button.One) && num < 5f)
                 {
                     cooltime.SetActive(true);
                 }

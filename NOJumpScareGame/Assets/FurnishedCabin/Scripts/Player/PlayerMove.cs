@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject DieingPanel;
     public GameObject DieCam;
     public GameObject gameManager;
+    public GameObject Cam;
 
     [SerializeField] 
     private float movementSpeed = 4f;
@@ -39,8 +40,11 @@ public class PlayerMove : MonoBehaviour
         //CharacterController.SimpleMove() applies deltaTime
         float horizInput = Input.GetAxis("Horizontal") * movementSpeed;
 
-        Vector3 forwardMovement = transform.forward * vertInput;
-        Vector3 rightMovement = transform.right * horizInput;
+        Vector3 forwardMovement = Cam.transform.forward * vertInput;
+        Vector3 rightMovement = Cam.transform.right * horizInput;
+
+        //Vector3 forwardMovement = transform.forward * vertInput;
+        //Vector3 rightMovement = transform.right * horizInput;
 
         //simple move applies delta time automatically
         charController.SimpleMove(forwardMovement + rightMovement);
