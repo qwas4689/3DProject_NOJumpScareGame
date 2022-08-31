@@ -66,7 +66,6 @@ public class PlayerRaycasting : MonoBehaviour
                     cameraSound.PlayOneShot(cameraClip);
                     --DeiCounts.setActiveCounts;
 
-                    phoneCam.GetComponent<PlayerLook>().enabled = false;
                     phoneCam.transform.SetParent(phoneCamWalking.transform);
                 }
                 else if (OVRInput.GetDown(OVRInput.Button.One) && num < 5f)
@@ -84,7 +83,7 @@ public class PlayerRaycasting : MonoBehaviour
             hitTarget.SetActive(false);
             cooltime.SetActive(false);
             isInputE = false;
-            phoneCam.GetComponent<PlayerLook>().enabled = true;
+          
             phoneCam.transform.SetParent(phoneCamCooltimeOver.transform);
             phoneCam.transform.localPosition = phoneCamCooltimeOver.transform.localPosition;
             phoneCam.transform.localRotation = phoneCamCooltimeOver.transform.localRotation;
