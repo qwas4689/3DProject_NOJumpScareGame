@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject gameManager;
     public GameObject Cam;
 
-    [SerializeField] 
+    [SerializeField]
     private float movementSpeed = 4f;
     private void Awake()
     {
@@ -26,18 +26,19 @@ public class PlayerMove : MonoBehaviour
         playerWalkSound = GetComponent<AudioSource>();
         playerWalkSound.Play();
         playerWalkSound.loop = true;
+        playerWalkSound.Pause();
     }
 
     private void Update()
     {
         PlayerMovement();
         PlayerWalkSound();
+        LookAround();
     }
 
     private void PlayerMovement()
     {
-        float vertInput = Input.GetAxis("Vertical") * movementSpeed;     
-        //CharacterController.SimpleMove() applies deltaTime
+        float vertInput = Input.GetAxis("Vertical") * movementSpeed;
         float horizInput = Input.GetAxis("Horizontal") * movementSpeed;
 
         Vector3 forwardMovement = Cam.transform.forward * vertInput;
@@ -46,22 +47,51 @@ public class PlayerMove : MonoBehaviour
         //Vector3 forwardMovement = transform.forward * vertInput;
         //Vector3 rightMovement = transform.right * horizInput;
 
-        //simple move applies delta time automatically
         charController.SimpleMove(forwardMovement + rightMovement);
     }
 
     private void PlayerWalkSound()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+        if (OVRInput.Get(OVRInput.Touch.PrimaryThumbstick))
         {
-            playerWalkSound.UnPause();
-        }
-        else
-        {
-            playerWalkSound.Pause();
+            Vector2 thumbstick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+
+            if (thumbstick.x < 0 || thumbstick.x > 0 || thumbstick.y < 0 || thumbstick.y > 0)
+            {
+                playerWalkSound.UnPause();
+            }
+            else
+            {
+                playerWalkSound.Pause();
+            }
         }
     }
 
+    private void LookAround()
+    {
+        if (OVRInput.Get(OVRInput.Touch.SecondaryThumbstick))
+        {
+            Vector2 thumbstick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+
+            if (thumbstick.x < 0)
+            {
+                gameObject.transform.Rotate(0, thumbstick.x * 2, 0);
+            }
+            else if (thumbstick.x > 0)
+            {
+                gameObject.transform.Rotate(0, thumbstick.x * 2, 0);
+            }
+
+            if (thumbstick.y < 0)
+            {
+                gameObject.transform.Rotate(0, thumbstick.y, 0);
+            }
+            else if (thumbstick.y > 0)
+            {
+                gameObject.transform.Rotate(0, thumbstick.y, 0);
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "FlyingKick")
@@ -74,5 +104,5 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    
+
 }

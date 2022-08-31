@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void SetPanel()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (OVRInput.GetDown(OVRInput.Button.Four))
         {
             DieingPanel.SetActive(false);
             Panel.SetActive(true);
