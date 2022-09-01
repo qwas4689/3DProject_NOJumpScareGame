@@ -19,7 +19,7 @@ public class OculusInput : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-          
+
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
             {
                 dot.gameObject.SetActive(true);
@@ -36,10 +36,23 @@ public class OculusInput : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.Button.One))
             {
                 UnityEngine.UI.Button btn = hit.transform.GetComponent<UnityEngine.UI.Button>();
+                UnityEngine.UI.Toggle tog = hit.transform.GetComponent<UnityEngine.UI.Toggle>();
 
-                if (btn != null)
+                if (btn != null) 
                 {
                     btn.onClick.Invoke();
+                    
+                }
+                if (tog != null)
+                {
+                    if (tog == false)
+                    {
+                        tog.isOn = !tog.isOn;
+                    }
+                    else if (tog == true)
+                    {
+                        tog.isOn = !tog.isOn;
+                    }
                 }
             }
         }
@@ -48,6 +61,6 @@ public class OculusInput : MonoBehaviour
             dot.gameObject.SetActive(false);
         }
     }
-    
+
 }
 

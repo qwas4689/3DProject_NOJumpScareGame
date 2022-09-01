@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
@@ -96,11 +97,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.tag == "FlyingKick")
         {
-            DieingPanel.SetActive(false);
-            gameObject.SetActive(false);
-            PanelDie.SetActive(true);
-            DieCam.SetActive(true);
             gameManager.GetComponent<GameManager>().MainSound.Pause();
+            SceneManager.LoadScene("Die");
         }
     }
 

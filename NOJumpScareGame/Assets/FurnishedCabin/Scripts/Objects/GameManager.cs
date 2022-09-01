@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject Panel;
     public GameObject DieingPanel;
-    public GameObject PanelDie;
     public GameObject Player;
     public GameObject DieCam;
     public GameObject easyModeMaker;
+    public GameObject ESCPanel;
+    public GameObject ESCRest;
+    public GameObject ESCSet;
     public UnityEvent ChangeEasyMode = new UnityEvent();
     public UnityEvent ChangeNotEasyMode = new UnityEvent();
 
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.Four))
         {
+            ESCPanel.transform.SetParent(ESCRest.transform);
             DieingPanel.SetActive(false);
             Panel.SetActive(true);
             MainSound.Pause();
@@ -80,7 +83,7 @@ public class GameManager : MonoBehaviour
         DieingPanel.SetActive(true);
         MainSound.UnPause();
         Cursor.visible = false;
-
+        ESCPanel.transform.SetParent(ESCSet.transform);
         Time.timeScale = 1f;
     }
 
@@ -137,11 +140,8 @@ public class GameManager : MonoBehaviour
 
         else if (DeiCounts.setActiveCounts == 8)
         {
-            DieingPanel.SetActive(false);
-            Player.SetActive(false);
-            PanelDie.SetActive(true);
-            DieCam.SetActive(true);
             MainSound.Pause();
+            SceneManager.LoadScene("Die");
         }
 
         else
