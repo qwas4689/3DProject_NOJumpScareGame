@@ -7,6 +7,7 @@ public class Cam : MonoBehaviour
     public GameObject cam;
     public GameObject phone;
 
+
     public Material[] mats;
 
     private bool isPhoneOn = false;
